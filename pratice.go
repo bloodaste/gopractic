@@ -180,4 +180,58 @@ func pratice() {
 	// 	fmt.Println(name)
 		
 	// }
+
+// 	package main
+
+// import "fmt"
+
+// // Shape is an interface that defines the Area and Perimeter methods.
+// type Shape interface {
+// 	Area() float64
+// 	Perimeter() float64
+// }
+
+// // Rectangle is a struct that represents a rectangle.
+// type Rectangle struct {
+// 	Width  float64
+// 	Height float64
+// }
+
+// // Area calculates the area of a Rectangle.
+// func (r Rectangle) Area() float64 {
+// 	return r.Width * r.Height
+// }
+
+// // Perimeter calculates the perimeter of a Rectangle.
+// func (r Rectangle) Perimeter() float64 {
+// 	return 2 * (r.Width + r.Height)
+// }
+
+// // Circle is a struct that represents a circle.
+// type Circle struct {
+// 	Radius float64
+// }
+
+// // Area calculates the area of a Circle.
+// func (c Circle) Area() float64 {
+// 	return 3.14159 * c.Radius * c.Radius
+// }
+
+// // Perimeter calculates the perimeter of a Circle.
+// func (c Circle) Perimeter() float64 {
+// 	return 2 * 3.14159 * c.Radius
+// }
+
+// // PrintShapeInfo takes any type that satisfies the Shape interface.
+// func PrintShapeInfo(s Shape) {
+// 	fmt.Printf("Area: %.2f, Perimeter: %.2f\n", s.Area(), s.Perimeter())
+// }
+
+// func main() {
+// 	rect := Rectangle{Width: 10, Height: 5}
+// 	circle := Circle{Radius: 7}
+
+// 	PrintShapeInfo(rect)   // Rectangle satisfies Shape
+// 	PrintShapeInfo(circle) // Circle satisfies Shape
+// }
 }

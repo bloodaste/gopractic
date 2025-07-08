@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 type bill struct {
 	customer     string
@@ -11,12 +14,14 @@ type bill struct {
 func billing(name string ) bill {
 	b := bill{
 		customer:     name,
+		ordereditems: map[string]float64{},
+		tip: 0,
 	
 	}
 	return b
 }
 
-func (b bill) format() {
+func (b bill) format() string{
 	fs := "your breakdowon items :\n"
 	var total float64 = 0; 
 	for index, v := range b.ordereditems{
@@ -24,11 +29,10 @@ func (b bill) format() {
 		total += v
 	}
 	// the first value of fs is "breakdwon items "then it replace the fs with v and the index 
-	total += b.tip
-	fmt.Println(b.customer)
-	fmt.Printf("tip: %v" , b.tip)
-	fmt.Printf("Thank you %v for your order %v,with %v tip your total is %0.2f",b.customer,fs , b.tip,total)
 
+	fs += fmt.Sprintf("tip: %v" , b.tip)
+	fs += fmt.Sprintf("Thank you %v, your total is %.2f\n", b.customer, total)
+	return fs
 }
 
 
@@ -43,4 +47,15 @@ func (b bill) additems(i string, p float64){
 }
 func (b *bill) changecustomersname(n string){
 	b.customer = n
+}
+
+func (b *bill) savefun(){
+ data := []byte(b.format()) 
+
+ err := os.WriteFile("bill/"+b.customer+".csv" , data, 0777)
+
+ if err != nil{
+	 panic(err)
+ }
+
 }
